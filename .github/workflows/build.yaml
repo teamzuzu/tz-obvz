@@ -1,0 +1,14 @@
+name: build-obvz
+on:
+  workflow_dispatch:
+env:
+  PKG: zreg.tzoci.site/obvz:latest
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v4
+    - name: build-image
+      run: |
+        docker build . -t ${PKG}
+        docker push ${PKG}
